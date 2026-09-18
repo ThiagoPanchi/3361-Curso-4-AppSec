@@ -1,5 +1,10 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
-module.exports = {
+export default {
   preset: 'ts-jest',
-  testEnvironment: 'node'
+  testEnvironment: 'node',
+  testPathIgnorePatterns: ['/node_modules/', '/build/'],
+  moduleNameMapper: {
+    '^.*services/redis/redisClient\\.js$': '<rootDir>/src/test/mocks/redisClientMock.ts',
+    '^(\\.{1,2}/.*)\\.js$': '$1'
+  }
 }
